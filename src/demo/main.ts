@@ -1,21 +1,9 @@
-// @ts-nocheck
+import { Subject } from 'rxjs'
+import { Model } from '../lib/core/model.class'
 
-@Model({
-  primaryKey: 'id',
-})
 export class Task {
-  @Model.hasOne<User>()
-  readonly user = new RxRelation<User>()
-
-  @Model.hasMany<Tag>()
-  readonly tags = new RxRelation<Tag>()
-
-  @Model.belongsToOne<User>()
-  readonly channel = new RxRelation<User>()
-
-  @Model.belongsToMany<Donation>()
-  readonly seenBy = new RxRelation<Donation>()
-
   @Model.attribute()
-  readonly id = Subject<string>()
+  readonly id = new Subject<string>()
 }
+
+new Task()
