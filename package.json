@@ -1,0 +1,11 @@
+{
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "npx tsc",
+    "build:watch": "npx tsc --watch",
+    "run:demo": "node dist/demo/main.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
