@@ -1,0 +1,12 @@
+arrowParens: always
+jsxSingleQuote: true
+singleQuote: true
+singleAttributePerLine: true
+printWidth: 80
+quoteProps: consistent
+semi: false
+tabWidth: 2
+useTabs: false
+trailingComma: all
+embeddedLanguageFormatting: auto
+
