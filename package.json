@@ -3,7 +3,8 @@
   "scripts": {
     "build": "npx tsc",
     "build:watch": "npx tsc --watch",
-    "run:demo": "node dist/demo/main.js"
+    "run:demo": "node dist/demo/main.js",
+    "dev:demo": "npx tsc --watch & node --watch dist/demo/main.js"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
