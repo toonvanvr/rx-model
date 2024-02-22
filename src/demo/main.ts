@@ -1,9 +1,8 @@
-import { Subject } from 'rxjs'
-import { Model } from '../lib/core/model.class'
+import { Task } from './model/task.model.js'
+import { User } from './model/user.model.js'
 
-export class Task {
-  @Model.attribute()
-  readonly id = new Subject<string>()
-}
+const task = new Task()
+const user = new User()
 
-new Task()
+console.log(task.data)
+console.log(user)
