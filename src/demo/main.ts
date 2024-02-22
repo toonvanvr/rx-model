@@ -4,5 +4,5 @@ import { User } from './model/user.model.js'
 const task = new Task()
 const user = new User()
 
-console.log(task.data)
+console.log(task)
 console.log(user)

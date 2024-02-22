@@ -1,7 +1,10 @@
-import zod from 'zod'
 import { Model } from '../../lib/model.class.js'
-import { mainStore } from '../stores/main.store.js'
+import { SCHM } from '../../lib/schema.js'
+import { UserRef } from './user.model.js'
 
-export class Task extends Model(mainStore, 'tasks', {
-  title: zod.string(),
+export const TaskRef = Symbol('Task')
+
+export class Task extends Model(TaskRef, {
+  title: SCHM.string(),
+  users: SCHM.belongsToOne(UserRef),
 }) {}

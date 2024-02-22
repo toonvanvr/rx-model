@@ -10,21 +10,18 @@ import {
 } from 'rxjs'
 import zod, { ZodType } from 'zod'
 import { RelationType } from './relation-type.js'
-import { Store } from './store.class.js'
 
 export type ModelConstructor<
   Schema extends Record<PropertyKey, ZodType | RelationType> = any,
-  StoreModels extends Record<string, any> = any,
-> = ReturnType<typeof Model<StoreModels, Schema>>
+> = ReturnType<typeof Model<Schema>>
 
 export type Model<
   Schema extends Record<PropertyKey, ZodType | RelationType> = any,
 > = InstanceType<ModelConstructor<Schema>>
 
 export function Model<
-  StoreModels extends Record<string, any>,
   Schema extends Record<PropertyKey, ZodType | RelationType>,
->(store: Store<StoreModels>, storeKey: keyof StoreModels, schema: Schema) {
+>(ref: PropertyKey, schema: Schema) {
   type ZodSchema = {
     [K in keyof Schema]: Schema[K] extends ZodType ? Schema[K] : never
   }
@@ -43,7 +40,6 @@ export function Model<
     readonly #data: Readonly<Data_Subjects>
     /** Local data transaction, atomic */
     readonly #transaction$ = new BehaviorSubject(false)
-    /** In-memory store where relations are indexed */
 
     // Public interface
     /** Emits after transaction */
@@ -55,6 +51,8 @@ export function Model<
 
     // Constructor
     constructor(data?: Partial<Data>) {
+      RelationType.register(ref, this)
+
       this.#data = Object.freeze(
         Object.fromEntries(
           Object.entries(schema)
