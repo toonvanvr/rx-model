@@ -1,12 +1,10 @@
+import { BelongsTo } from '../../lib/decorator/belongs-to.decorator.js'
 import { TaskModel } from './task.model.js'
 import { UserData } from './user.data.js'
 
 export class TaskData {
-  attributes = {
-    user: () => UserData,
-  }
-  // @BelongsTo(() => UserData)
-  // user = null
+  @BelongsTo(() => UserData)
+  user = null
 
   constructor(private readonly model: TaskModel) {}
 }
