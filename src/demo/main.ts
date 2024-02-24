@@ -1,8 +1,7 @@
-import { Task } from './model/task.model.js'
-import { User } from './model/user.model.js'
+import { TaskModel } from './model/task.model.js'
+import { UserModel } from './model/user.model.js'
 
-const task = new Task()
-const user = new User()
+const task = new TaskModel()
+const user = new UserModel()
 
-console.log(task)
-console.log(user)
+console.log(task, user)
